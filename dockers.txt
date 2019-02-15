@@ -44,11 +44,15 @@ docker build -t chatall_notify:v01 ./chatApp/backend/notification-server
 
 docker info
 
+docker-compose up --build
+
 //---------------------------------------------------------------
 
 docker create service --name <name> -p 80:80 --replicas <integer>
 
 docker swarm init --advertise-addr 192.168.99.100:2377 --listen-addr 192.168.99.100:2377
+
+docker swarm leave --force
 
 # worker
 docker swarm join-token worker

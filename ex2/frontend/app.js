@@ -1,4 +1,6 @@
-const url = 'http://localhost:3001';
+//const url = 'http://localhost:3001'; //Localhost
+const url = 'http://192.168.99.100:3001'; //Dockers
+//const url = 'server';
 
 let input_name = document.querySelector("#input-name");
 let input_type = document.querySelector("#input-type");
