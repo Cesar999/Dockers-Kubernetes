@@ -1,5 +1,5 @@
-//const url = 'http://localhost:3001'; //Localhost
-const url = 'http://192.168.99.100:3001'; //Dockers
+const url = 'http://localhost:3001'; //Localhost
+//const url = 'http://192.168.99.100:3001'; //Dockers
 //const url = 'server';
 
 let input_name = document.querySelector("#input-name");
@@ -22,8 +22,6 @@ post.addEventListener('keydown', ()=>{
         post_btn.disabled = false;
     }
 })
-
-
 
 
 post_btn.addEventListener('click',onClickPost);
@@ -90,4 +88,42 @@ function onClickGet(){
     }).catch(()=>{
 
     });
+}
+
+
+let post_card = document.querySelector(".post.card");
+let get_card = document.querySelector(".get.card");
+
+let post_card_back = document.querySelector(".post.card.back");
+let get_card_back = document.querySelector(".get.card.back");
+
+post_card.addEventListener('click',rotateCard);
+get_card.addEventListener('click',rotateCard);
+post_card_back.addEventListener('click',rotateCard);
+get_card_back.addEventListener('click',rotateCard);
+
+
+function rotateCard(e){
+
+    if(e.target.className === 'post card'
+     ||e.target.className === 'post card back'){
+        post_card.className = 'post card rotate-card';
+        post_card_back.className = 'post card back rotate-back';
+    } else if(e.target.className === 'post card rotate-card'
+    ||e.target.className === 'post card back rotate-back'){
+        post_card.className = 'post card';
+        post_card_back .className = 'post card back';
+    }
+
+    if(e.target.className === 'get card'
+    ||e.target.className === 'get card back'){
+        get_card.className = 'get card rotate-card';
+       get_card_back.className = 'get card back rotate-back';
+    } else if(e.target.className === 'get card rotate-card'
+    ||e.target.className === 'get card back rotate-back'){
+        get_card.className = 'get card';
+        get_card_back.className = 'get card back';
+    }
+
+
 }
