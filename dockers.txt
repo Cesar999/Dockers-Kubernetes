@@ -1,0 +1,66 @@
+#display containers
+docker ps
+docker ps -a
+
+#display images
+docker images
+
+#build an image
+docker build -t <tag>:<version> .
+
+#run a container      (Docker Host):(Inside Container)
+docker run -d --name <name> -p 4200:80 <image>:<version>
+
+#run root into container
+docker run -it --name <name> <image>:<version>
+
+#show machine ip
+docker-machine ip
+
+docker stop <container>
+docker start <container>
+
+#remove one image
+dokcer rmi <name>:<tag>
+
+#remove one container
+docker rm <name>
+
+# Delete every Docker containers
+# Must be run first because images are attached to containers
+docker rm -f $(docker ps -a -q)
+
+# Delete every Docker image
+docker rmi -f $(docker images -q)
+
+#Pulling
+docker pull
+
+ --host 0.0.0.0
+
+docker build -t chatall_angular:v01 ./chatApp
+docker build -t chatall_auth:v01 ./chatApp/backend/auth-server
+docker build -t chatall_notify:v01 ./chatApp/backend/notification-server
+
+docker info
+
+//---------------------------------------------------------------
+
+docker create service --name <name> -p 80:80 --replicas <integer>
+
+docker swarm init --advertise-addr 192.168.99.100:2377 --listen-addr 192.168.99.100:2377
+
+# worker
+docker swarm join-token worker
+
+docker swarm join --token SWMTKN-1-1clw18ab5f7cj2xq1tfvtk6azl3flb4splpyvkt0z0ar68v1r6-e4va6ydomxcsctmijbd2m8io7 192.168.99.100:2377
+
+# manager
+docker swarm join-token manager
+
+docker swarm join --token SWMTKN-1-1clw18ab5f7cj2xq1tfvtk6azl3flb4splpyvkt0z0ar68v1r6-8unb807c14xkx4pl8y7abfvlw 192.168.99.100:2377
+
+docker node promote <id>
+
+docker node ls
+docker service ls
