@@ -4,8 +4,8 @@ import * as bodyParser from 'body-parser';
 
 //npm install @types/node
 
-//const url_mongo = "mongodb://database"; //Docker Compose
-const url_mongo = "mongodb://localhost"; //Localhost
+const url_mongo = "mongodb://database"; //Docker Compose
+//const url_mongo = "mongodb://localhost"; //Localhost
 
 const connectWithRetry = function() {
     return mongoose.connect(url_mongo+'/docker-db-ex2', { useNewUrlParser: true },

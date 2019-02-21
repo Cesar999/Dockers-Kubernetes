@@ -13,6 +13,8 @@ services:
     build: ./frontend # specify the directory of the Dockerfile
     ports:
       - "4200:80" # specify port forewarding
+    links:
+      - server # link this service to the server service
 
   server: #name of the service
     build: ./backend # specify the directory of the Dockerfile

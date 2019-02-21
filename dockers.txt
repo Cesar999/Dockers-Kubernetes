@@ -1,3 +1,12 @@
+-a -> all
+-p -> publish
+-f -> force
+-d -> detached mode
+-e -> enviromental variable
+-t -> pseudo tty simulates a terminal
+-i -> keeps session open to receive input
+-v -> new volume / name volume -v <mydb-db:>
+
 #display containers
 docker ps
 docker ps -a
@@ -5,14 +14,24 @@ docker ps -a
 #display images
 docker images
 
+#Always start a new container
+docker container run <image>
+
 #build an image
 docker build -t <tag>:<version> .
 
 #run a container      (Docker Host):(Inside Container)
-docker run -d --name <name> -p 4200:80 <image>:<version>
+docker run -d --name <name> -p 4200:80 <image>:<version> 
+docker run -d --name <name> --network <network> <image>:<version> 
 
 #run root into container
 docker run -it --name <name> <image>:<version>
+
+#run additional command in existing container
+docker exec -it 
+
+#give you a terminal inside the container
+... -it bash   --->  exit
 
 #show machine ip
 docker-machine ip
@@ -33,10 +52,59 @@ docker rm -f $(docker ps -a -q)
 # Delete every Docker image
 docker rmi -f $(docker images -q)
 
-#Pulling
-docker pull
+#show processes inside container
+docker top <container>
 
- --host 0.0.0.0
+#create image tag
+docker image tag <source:tag> <target:tag>
+
+#Volume
+docker volume ls
+docker volume inspect
+docker volume create #ahead of time
+
+
+#show networks
+docker network ls
+
+#inspect networks
+docker network inspect <bridge>
+
+#create networks
+docker network create --driver
+
+#connect container to network
+docker network connect
+docker network disconnect
+
+#show metadata in JSON
+docker inspect <container>
+
+#show metadata in JSON
+docker inspect <image>
+
+#showr running containers stats
+docker stats
+
+#show all running processes
+ps aux
+
+#Docker account repo
+docker login
+docker logout
+
+#Pulling
+docker pull <image name>
+
+#pushing
+docker push <repo/image name>
+
+#logs
+docker container logs <container>
+--help
+
+#show container port
+docker container port
 
 docker build -t chatall_angular:v01 ./chatApp
 docker build -t chatall_auth:v01 ./chatApp/backend/auth-server
@@ -44,13 +112,26 @@ docker build -t chatall_notify:v01 ./chatApp/backend/notification-server
 
 docker info
 
+docker version
+
 docker-compose up --build
 
 //---------------------------------------------------------------
 
-docker create service --name <name> -p 80:80 --replicas <integer>
+docker container run -d --net dude --net-alias search elasticsearch:2
+docker network create dude
+docker container run -d --net dude --net-alias search elasticsearch:2
+docker container ls
+docker container run --rm --net dude alphine nslookup search
+docker container run --rm --net dude centos curl -s search:<port>
+docker container run --rm --net dude centos curl -s search:<port>
+docker container ls
+docker container rm -f <id> <id>
+//-------------------------------------------------------------
 
 docker swarm init --advertise-addr 192.168.99.100:2377 --listen-addr 192.168.99.100:2377
+
+docker create service --name <name> -p 80:80 --replicas <integer>
 
 docker swarm leave --force
 
@@ -66,5 +147,11 @@ docker swarm join --token SWMTKN-1-1clw18ab5f7cj2xq1tfvtk6azl3flb4splpyvkt0z0ar6
 
 docker node promote <id>
 
+#docker run -> docker service
 docker node ls
 docker service ls
+docker service ps <name>
+docker service update <id> --replicas <integer>
+docker node update --role manager <node>
+
+docker swarm init --advertise-addr 192.168.0.52:2377 --listen-addr 192.168.0.52:2377

@@ -147,12 +147,14 @@ hr{
 }
 
 .post.card.back{
+    background-image: linear-gradient(to left bottom, rgba(255, 0, 191, 0.8), rgba(252, 76, 7, 0.8))!important;
     position: absolute;
     left: 6.3%;
     z-index: -1;
 }
 
 .get.card.back{
+    background-image: linear-gradient(to left bottom, rgba(17, 21, 248, 0.8), rgba(135, 228, 235, 0.8))!important;
     position: absolute;
     right:  6.3%;
     z-index: -1;

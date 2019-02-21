@@ -15,8 +15,8 @@ var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 //npm install @types/node
-//const url_mongo = "mongodb://database"; //Docker Compose
-var url_mongo = "mongodb://localhost"; //Localhost
+var url_mongo = "mongodb://database"; //Docker Compose
+//const url_mongo = "mongodb://localhost"; //Localhost
 var connectWithRetry = function () {
     return mongoose.connect(url_mongo + '/docker-db-ex2', { useNewUrlParser: true }, function (err) {
         if (err) {

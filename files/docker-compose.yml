@@ -1,0 +1,12 @@
+version: "3"
+
+services: # Containers 
+  servicename: # a friendly name this is also DNS inside network
+    image: # image to build
+    command: # optional, replace the default CMD spicified by the image
+    enviroment: # same as -e in docker trun
+    volumes: # same as -v in docker run
+  servicename2:
+
+volume: # same as docker volume create
+networks: # same as docker network create
