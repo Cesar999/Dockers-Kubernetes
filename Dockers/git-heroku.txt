@@ -1,0 +1,84 @@
+heroku create
+git remote -v
+git push heroku master
+
+Git : version control system.
+It's a system that records changes to our files over time.
+We can recally specific versions of those files at any given time.
+Many people can easily collaborate on a project and have their own version of projects files on their computer.
+
+GitHub: Onlien service that host our projects.
+Share our code.
+Developers can download the projects and work on them.
+They can re-upload their edits and merge them with the main codebase.
+
+Git - Linus Torvalds
+Initial Release: 7 April, 2005.
+
+GitHub - Owner Microsoft
+Founded February 8, 2008.
+
+A repo is a container for a project you want to track with Git.
+Can have many different repo's for many different projects on your computer.
+Like a project folder which Git tracks the contents of for us.
+
+git --version
+
+git config --global user.name <username>
+git config --global user.email <user@email>
+
+
+git init 
+
+git status
+
+git add <file name>
+git add .
+
+git commit -m '<some message>'
+
+
+git log
+git log --oneline
+
+git checkout <branch name>
+
+git checkout <commit id>
+git revert <commit id>
+git reset <commit id>
+git reset <commit id> --hard
+:wq (shift) exit
+
+git branch <branch name>
+git branch -a
+git checkout -b <branch name>
+
+git checkout <branch name>
+
+git branch -d <branch name>
+
+
+git merge <branch name>
+:wq
+
+---------
+GitHub
+
+git remote add origin <url>
+git remote rm <remote name>
+
+git push <origin/url> <branch name>
+git remote add origin <url>
+
+git clone <url>
+git remote -v
+
+git pull origin <branch name>
+
+------------------
+
+heroku create
+
+git push heroku master
+
+heroku open

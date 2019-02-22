@@ -1,0 +1,24 @@
+kubectl version
+minikube start
+
+minikube ip
+kubectl apply -f <filename.yaml>
+kubectl get pods
+kubectl get services
+kubectl delete -f <filename.yaml>
+
+kubectl get deployments
+
+minikube docker-env
+docker push <docker id>
+
+ kubectl delete pods --all --grace-period=0 --force
+ kubectl delete deployments --all --grace-period=0 --force
+ kubectl delete services --all --grace-period=0 --force
+
+kubectl expose deployment angular-deployment --type=NodePort
+service "angular-service" exposed
+
+kubectl -it exec <pod name> sh
+kubectl get po --show-labels
+kubectl get po --show-labels -l <label:value>
