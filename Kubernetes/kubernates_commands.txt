@@ -9,7 +9,17 @@ kubectl delete -f <filename.yaml>
 
 kubectl get deployments
 
+kubectl get all
+kubectl get ns
+kubectl get pods -n <ns name>
+
+kubectl delete pvc <name>
+kubectl get pvc <name>
+
+kubectl describe pvc
+
 minikube docker-env
+docker-machine start default
 docker push <docker id>
 
  kubectl delete pods --all --grace-period=0 --force

@@ -155,3 +155,12 @@ docker service update <id> --replicas <integer>
 docker node update --role manager <node>
 
 docker swarm init --advertise-addr 192.168.0.52:2377 --listen-addr 192.168.0.52:2377
+
+//---------------------
+
+docker build -t ex3_front-end:v04 ./frontend/grades
+docker build -t  ex3_auth:v04 ./backend/auth
+docker build -t ex3_notify:v04 ./backend/notify
+
+kubectl apply -f deployment.yaml
+kubectl get pods
