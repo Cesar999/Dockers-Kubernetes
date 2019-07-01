@@ -63,6 +63,7 @@ docker volume ls
 docker volume inspect
 docker volume create #ahead of time
 
+docker system prune --force --volumes
 
 #show networks
 docker network ls

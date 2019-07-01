@@ -76,6 +76,7 @@ git remote -v
 git pull origin <branch name>
 
 ------------------
+rm -rf .git
 
 heroku create
 

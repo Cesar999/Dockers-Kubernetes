@@ -1,0 +1,53 @@
+version: "3"
+
+# Define the services/containers to be run
+services:
+  database-auth: # name of the service
+    image: mysql:5.7
+    restart: always
+    command: --disable-partition-engine-check
+    environment:
+      #Change values for customization
+      - MYSQL_DATABASE=db
+       # So you don't have to use root, but you can if you like
+      - MYSQL_USER=user
+      # You can use whatever password you like
+      - MYSQL_PASSWORD=password
+      # Password for root access
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306" # specify port forewarding
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+    volumes:
+      - authDB:/var/lib/mysql
+
+  auth: #name of the service
+    build: ./back-end-auth # specify the directory of the Dockerfile
+    environment:
+      #Change values for customization
+      - MYSQL_DATABASE=db
+       # So you don't have to use root, but you can if you like
+      - MYSQL_USER=user
+      # You can use whatever password you like
+      - MYSQL_PASSWORD=password
+      # Password for root access
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_HOST=database-auth
+    ports:
+      - "3002:3002" #specify ports forewarding
+    links:
+      - database-auth # link this service to the database service
+
+  front-end: # name of the service
+    build: ./front-end-master # specify the directory of the Dockerfile
+    environment:
+      - URL_AUTH=/auth
+    ports:
+      - "3000:80" # specify port forewarding
+    links:
+      - auth # link this service to the server service  
+         
+volumes:
+  authDB:
